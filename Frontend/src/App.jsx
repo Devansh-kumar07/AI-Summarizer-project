@@ -19,7 +19,10 @@ function App() {
 
   async function learnFromCode() {
     try {
-      const response = await axios.post('http://localhost:3000/ai/get-review', { code })
+      const response = await axios.post(
+        'https://ai-summarizer-project.onrender.com/ai/get-review',
+        { code }
+      );
       setLesson(response.data)
     } catch (error) {
       console.error('Error getting lesson:', error)
@@ -58,7 +61,7 @@ function App() {
           {!lesson ? (
             <div className="empty-state">
               <h2>Ready to learn?</h2>
-              <p>Enter your text on the left and click "Summarize" to get personalized summary</p>
+              <p>Enter your text on the left and click "Summarize" to get a personalized summary</p>
             </div>
           ) : (
             <Markdown
@@ -70,7 +73,5 @@ function App() {
     </>
   )
 }
-
-
 
 export default App
